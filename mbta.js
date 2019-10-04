@@ -69,7 +69,7 @@ const printIt = function (lSLine, sS, lELine, eS) {
 
 }
 
-const mbta = function (sLine, sStation, eLine, eStation) {
+const stopsBetweenStations = function (sLine, sStation, eLine, eStation) {
     //Checking if the selected lines are valid selections
     const lines = ['red', 'green', 'orange'];
     if (!(sLine && eLine && lines.indexOf(sLine.toString().toLowerCase()) >= 0 && lines.indexOf(eLine.toString().toLowerCase()) >= 0))
@@ -109,18 +109,18 @@ const mbta = function (sLine, sStation, eLine, eStation) {
 /*
 Sample tests and results without printing the riders stops
 */
-mbta('green', 'copley', 'red', 'park street') // 3
-mbta('ReD', 'KeNdAll', 'oRange', 'State') // 2
-mbta('ReD', 'KeNdAll', 'red', 'kendall') // 0
-mbta('green', '', 'red') // "Please select one of the available stations...
-mbta(3, 'Aloe', 'red', 'park street') //"Please select one of available lines: red...
-mbta() // "Please select one of available lines: red...
+stopsBetweenStations('green', 'copley', 'red', 'park street') // 3
+stopsBetweenStations('ReD', 'KeNdAll', 'oRange', 'State') // 2
+stopsBetweenStations('ReD', 'KeNdAll', 'red', 'kendall') // 0
+stopsBetweenStations('green', '', 'red') // "Please select one of the available stations...
+stopsBetweenStations(3, 'Aloe', 'red', 'park street') //"Please select one of available lines: red...
+stopsBetweenStations() // "Please select one of available lines: red...
 
 
 
 //Sample tests and resutls with printing the riders stops
 
-mbta('green', 'copley', 'red', 'central')
+stopsBetweenStations('green', 'copley', 'red', 'central')
 /*
 Rider boards the train at the Copley station from the Green line.
 Rider arrives at the Arlington station on the Green line.
@@ -132,7 +132,7 @@ Rider arrives at the Central station on the Red line.
 Rider exits the train at Central station from the Red line.
 "The distance is 5"
 */
-mbta('ReD', 'KeNdAll', 'oRange', 'State')
+stopsBetweenStations('ReD', 'KeNdAll', 'oRange', 'State')
 /*
 Rider boards the train at the Kendall station from the Red line.
 Rider arrives at the Park Street station on the Red line.
@@ -141,7 +141,7 @@ Rider arrives at the State station on the Orange line.
 Rider exits the train at State station from the Orange line.
 "The distance is 2"
 */
-mbta('red', 'south station', 'red', 'alewife')
+stopsBetweenStations('red', 'south station', 'red', 'alewife')
 /*
 Rider boards the train at the South Station station from the Red line.
 Rider arrives at the Park Street station on the Red line.
@@ -154,7 +154,7 @@ Rider arrives at the Alewife station on the Red line.
 Rider exits the train at Alewife station from the Red line.
 " The distance is 7"
 */
-mbta('green', 'park street', 'red', 'alewife')
+stopsBetweenStations('green', 'park street', 'red', 'alewife')
 /*
 Rider arrives at the Park Street station from the Green line side.
 Rider changes lines at Park Street coming from the Green line going to Red line, and boards the train
