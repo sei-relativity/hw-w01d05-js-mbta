@@ -1,11 +1,8 @@
-const printIt = function (lSLine, sS, lELine, eS) {
+const printIt = function (lSLine, sS, lELine, eS, stops) {
     let f = 0;//the flag is on when changing the line is needed
 
-    const stops = {
-        red: ['south station', 'park street', 'kendall', 'central', 'harvard', 'porter', 'davis', 'alewife'],
-        green: ['government center', 'park street', 'boylston', 'arlington', 'copley', 'hynes', 'kenmore'],
-        orange: ['north station', 'haymarket', 'park street', 'state', 'downtown crossing', 'chinatown', 'back bay', 'forest hills']
-    }
+
+
     if (lSLine == lELine) {
         if (sS > eS) {
             var route = stops[lSLine].slice(eS, sS + 1)
@@ -97,7 +94,7 @@ const stopsBetweenStations = function (sLine, sStation, eLine, eStation) {
     const eS = stops[lELine].indexOf(lEStation);
 
     //Printing the stops
-    printIt(lSLine, sS, lELine, eS);
+    printIt(lSLine, sS, lELine, eS, stops);
     //calculating the number of stops
     if (lSLine == lELine) {
         return " The distance is " + Math.abs(eS - sS);
