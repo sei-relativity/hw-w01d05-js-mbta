@@ -10,7 +10,7 @@ const stopsBetweenStations = function (sLine, sStation, eLine, eStation) {
         "Copley", "Hynes", "Kenmore"]
     const orangeLine = ["North Station", "Haymarket", "Park Street", "State",
         "Downtown Crossing", "Chinatown", "Back Bay", "Forest Hills"]
-
+    
     let indexS; //  index of the start station
     let indexE; //  index of the end station
 
@@ -35,14 +35,23 @@ const stopsBetweenStations = function (sLine, sStation, eLine, eStation) {
     let stopsNum = 0;
     //  case passenger on same line
     if(eLine == sLine){
-        stopsNum = 0;
         stopsNum = Math.abs(indexE - indexS);
     } else{
-        stopsNum = 0;
-        stopsNum += Math.abs(sLine.indexOf("Park Street") - indexS)
-        stopsNum += Math.abs(eLine.indexOf("Park Street") - indexE);
+        if(sLine == "Red")
+        stopsNum += Math.abs(redLine.indexOf("Park Street") - indexS)
+        if(sLine == "Green")
+        stopsNum += Math.abs(greenLine.indexOf("Park Street") - indexS)
+        if(sLine == "Orange")
+        stopsNum += Math.abs(orangeLine.indexOf("Park Street") - indexS)
+
+        if(eLine == "Red")
+        stopsNum += Math.abs(redLine.indexOf("Park Street") - indexE)
+        if(eLine == "Green")
+        stopsNum += Math.abs(greenLine.indexOf("Park Street") - indexE)
+        if(eLine == "Orange")
+        stopsNum += Math.abs(orangeLine.indexOf("Park Street") - indexE)
     }
 
     //  print out the number of stops
-    console.log("" + sLine.indexOf("Park Street") + " stops");
+    console.log("" + stopsNum + " stops");
 }
