@@ -1,6 +1,6 @@
 // want to calculate number of stops betwwen stations
 // function should take following arguments (start_line, start_station, end_line, end_station)
-// all lines intersect at parkstation
+// all lines intersect at parks tation
 
 
 const subwayLines = {
@@ -35,7 +35,67 @@ const stopsBetweenStations = function(startLine, startStation, endLine, endStati
         }
     } else { 
         // line switching
-        return "line switching";
+        let parkStreetIndex = subwayLines[startLine].indexOf("Park Street");
+
+        // go to park street station
+
+        if (startStationIndex > parkStreetIndex) {
+            // going left to park street 
+            for (let i = startStationIndex; i > parkStreetIndex; i--) {
+                currentStation = subwayLines[startLine][i];
+                numOfStops++;  
+                console.log(currentStation);
+            }
+            // from end line park street to end station
+            parkStreetIndex = subwayLines[endLine].indexOf("Park Street");
+
+            // going left from end line park street
+            if (parkStreetIndex > endStationIndex) {
+                for (let i = parkStreetIndex; i > endStationIndex; i--) {
+                    currentStation = subwayLines[endLine][i];
+                    numOfStops++;    
+                    console.log(currentStation);    
+                                
+                } return numOfStops;
+            } else {
+                // going right from end line park street
+                for (let i = parkStreetIndex; i < endStationIndex; i++) {
+                    currentStation = subwayLines[endLine][i];
+                    numOfStops++;
+                    console.log(currentStation);
+                         
+                } return numOfStops;
+            }
+
+        } else {
+            // going right to park street
+            for (let i = startStationIndex; i < parkStreetIndex; i++) {
+                currentStation = subwayLines[startLine][i];
+                numOfStops++;
+                console.log(currentStation);
+            }
+            // from end line park station to end station
+            parkStreetIndex = subwayLines[endLine].indexOf("Park Street");
+
+            if (parkStreetIndex > endStationIndex) {
+                for (let i = parkStreetIndex; i > endStationIndex; i--) {
+                    currentStation = subwayLines[endLine][i];
+                    numOfStops++;     
+                    console.log(currentStation);   
+                                
+                } return numOfStops;
+            } else {
+                // going right from end line park street
+                for (let i = parkStreetIndex; i < endStationIndex; i++) {
+                    currentStation = subwayLines[endLine][i];
+                    numOfStops++;
+                    console.log(currentStation);
+                    
+                         
+                } return numOfStops;
+            }
+
+        }
     }
 
 }
@@ -45,3 +105,4 @@ const stopsBetweenStations = function(startLine, startStation, endLine, endStati
 // stopsBetweenStations('Red', 'Alewife', 'Red', 'Alewife') // 0 stops
 // stopsBetweenStations('Red', 'Alewife', 'Red', 'South Station') // 7 stops
 // stopsBetweenStations('Red', 'South Station', 'Green', 'Kenmore') // 6 stops
+// stopsBetweenStations('Red', 'Davis', 'Green', 'Kenmore') // 10 stops
