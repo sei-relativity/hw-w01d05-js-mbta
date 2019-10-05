@@ -17,87 +17,105 @@ const stopsBetweenStations = function(startLine, startStation, endLine, endStati
     const startStationIndex = subwayLines[startLine].indexOf(startStation);
     const endStationIndex = subwayLines[endLine].indexOf(endStation);
 
+    console.log("Rider boards the train at " + startLine + " line, " + startStation);
+    
     if (startLine === endLine) {        
         if (startStationIndex > endStationIndex) {
                 // going left
                 for (let i = startStationIndex; i > endStationIndex; i--) {
                     currentStation = subwayLines[startLine][i];
                     numOfStops++;        
+                    console.log("Rider arrives at " + currentStation + ' station.');
                                 
-                } return numOfStops;
+                } 
+                console.log("Rider exits the train at " + endLine + ", " + endStation + " station.");
+                return numOfStops + " stations";
         } else {
                 // going right
                 for (let i = startStationIndex; i < endStationIndex; i++) {
                     currentStation = subwayLines[startLine][i];
                     numOfStops++;
-                         
-                } return numOfStops;
+                    console.log("Rider arrives at " + currentStation + ' station.');       
+                } 
+                console.log("Rider exits the train at " + endLine + " line at " + endStation + " station.");
+                return numOfStops + " stations";
         }
     } else { 
         // line switching
         let parkStreetIndex = subwayLines[startLine].indexOf("Park Street");
 
         // go to park street station
-
         if (startStationIndex > parkStreetIndex) {
+
             // going left to park street 
             for (let i = startStationIndex; i > parkStreetIndex; i--) {
                 currentStation = subwayLines[startLine][i];
                 numOfStops++;  
-                console.log(currentStation);
+                console.log("Rider arrives at " + currentStation + ' station.');
             }
             // from end line park street to end station
             parkStreetIndex = subwayLines[endLine].indexOf("Park Street");
+            console.log("Rider transfers from " + startLine + " to " + endLine + " line, at "+ currentStation + ' station.');
+            
 
             // going left from end line park street
             if (parkStreetIndex > endStationIndex) {
                 for (let i = parkStreetIndex; i > endStationIndex; i--) {
                     currentStation = subwayLines[endLine][i];
                     numOfStops++;    
-                    console.log(currentStation);    
+                    console.log("Rider arrives at " + currentStation + ' station.');  
                                 
-                } return numOfStops;
+                } 
+                console.log("Rider exits the train at " + endLine + " line at " + endStation + " station.");
+                return numOfStops + " stations";
+
             } else {
+
                 // going right from end line park street
                 for (let i = parkStreetIndex; i < endStationIndex; i++) {
                     currentStation = subwayLines[endLine][i];
                     numOfStops++;
-                    console.log(currentStation);
+                    console.log("Rider arrives at " + currentStation + ' station.');
                          
-                } return numOfStops;
+                } 
+                console.log("Rider transfers from " + startLine + " to " + endLine + " line, at "+ currentStation + ' station.');
             }
 
         } else {
+
             // going right to park street
             for (let i = startStationIndex; i < parkStreetIndex; i++) {
                 currentStation = subwayLines[startLine][i];
                 numOfStops++;
-                console.log(currentStation);
+                console.log("Rider arrives at " + currentStation + ' station.');
             }
             // from end line park station to end station
             parkStreetIndex = subwayLines[endLine].indexOf("Park Street");
+            console.log("Rider transfers from " + startLine + " to " + endLine + " at "+ currentStation + ' station.');
+
 
             if (parkStreetIndex > endStationIndex) {
                 for (let i = parkStreetIndex; i > endStationIndex; i--) {
                     currentStation = subwayLines[endLine][i];
                     numOfStops++;     
-                    console.log(currentStation);   
+                    console.log("Rider arrives at " + currentStation + ' station.'); 
                                 
-                } return numOfStops;
+                } 
+                console.log("Rider exits the train at " + endLine + " line at " + endStation + " station.");
+                return numOfStops + " stations";
             } else {
+
                 // going right from end line park street
                 for (let i = parkStreetIndex; i < endStationIndex; i++) {
                     currentStation = subwayLines[endLine][i];
                     numOfStops++;
-                    console.log(currentStation);
-                    
-                         
-                } return numOfStops;
+                    console.log("Rider arrives at " + currentStation + ' station.');     
+                } 
+                console.log("Rider exits the train at " + endLine + " line at " + endStation + " station.");
+                return numOfStops;
             }
-
         }
     }
-
 }
 
 
