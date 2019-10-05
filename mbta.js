@@ -3,7 +3,7 @@ const mbta = {
     green:["Goverment Center","Park Street","Bolyston","Arlington","Copley","Hynes","Kenmore"],
     orange:["North Station","Haymarket","Park Street","State","Downtown Crossing","Chinatown","Back Bay","Forest Hills"]
     };
-    const stopBetweenstations = function(startLine, startStation, endLine, endStation){
+    const stopBetweenStations = function(startLine, startStation, endLine, endStation){
     
     const start= mbta[startLine].indexOf(startStation);
     const end= mbta[endLine].indexOf(endStation);
@@ -72,15 +72,15 @@ const mbta = {
         numOfStops++;}
         return numOfStops + " stops";}}}}
     
-    stopBetweenstations("green","Goverment Center","red","South Station");
+    stopBetweenStations("green","Goverment Center","red","South Station");
     output:"2 stops"
-    stopBetweenstations("orange","Forest Hills","green","Goverment Center");
+    stopBetweenStations("orange","Forest Hills","green","Goverment Center");
     output:"6 stops"
-    stopBetweenstations("red","Alewife","red","Alewife");
+    stopBetweenStations("red","Alewife","red","Alewife");
     output:"0 stops"
-    stopBetweenstations("red","Alewife","red","South Station");
+    stopBetweenStations("red","Alewife","red","South Station");
     output:"7 stops"
-    stopBetweenstations("green","Copley","orange","Forest Hills");
+    stopBetweenStations("green","Copley","orange","Forest Hills");
     output:"8 stops"
-    stopBetweenstations("red","Davis","green","Kenmore");
+    stopBetweenStations("red","Davis","green","Kenmore");
     output:"10 stops"
