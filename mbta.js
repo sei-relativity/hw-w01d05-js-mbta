@@ -4,11 +4,29 @@ const subway = {
     Orange:["North Station","Haymarket","Park Street","State","Downtown Crossing","Chinatown","Back Bay","Forest Hills"]
 }
 const stopsBetweenStations =function(startLain,endLine,startStation,endStation){
-    let x = endLine = 0;
+    
+startLain===startStation;
+
 for(let i =0; i < subway[i].length;i++){
-x +=subway[i];
-
-return x;
+    
+    startLain +=i;
+    
+    return startLain;
 }
+
+endLine===endStation;
+
+for(let i =0; i < subway[i].length;i++){
+
+    endLine +=subway[i];
+
+return endLine;
 }
 
+}
+
+/*
+stopsBetweenStations('Red', 'Alewife', 'Red', 'Alewife') // 0 stops
+stopsBetweenStations('Red', 'Alewife', 'Red', 'South Station') // 7 stops
+stopsBetweenStations('Red', 'South Station', 'Green', 'Kenmore') // 6 stops
+*/
