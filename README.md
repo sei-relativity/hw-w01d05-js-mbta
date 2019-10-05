@@ -62,7 +62,28 @@ stopsBetweenStations('Red', 'Alewife', 'Red', 'Alewife') // 0 stops
 stopsBetweenStations('Red', 'Alewife', 'Red', 'South Station') // 7 stops
 stopsBetweenStations('Red', 'South Station', 'Green', 'Kenmore') // 6 stops
 ```
+```
+const stopsBtweenStations = function (startLine, startStation, endLine, endStation){
 
+		const subwayLines = {
+			red:["South Station", "Park Street", "Kendall", "Central", "Harvard", "Porter", "Davis", "Alewife"],
+      green:["Government Center", "Park Street", "Boylston", "Arlington", "Copley", "Hynes", "Kenmore"],
+			Orange:["North Stationr", "Haymarket", "Park Street","State", "Downtown Crossing", "Chinatown", "BackBay", "Forest Hills"]};
+		};
+        totalStops=0;
+
+
+
+
+
+
+
+
+        return totalStops;
+
+}
+
+```
 ## Hints
 
 - Consider diagramming the lines by sketching out the subway lines and their
