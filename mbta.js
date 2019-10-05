@@ -31,22 +31,24 @@ const subwayStation = {
     },
 
     stopsBetweenStations:
-     function (startLine, startStation, endLine, endStation)
+     function (startLine,
+                startStation,
+                endLine, endStation)
       {
-        const print = "Rider boards the train a " + startLine + " Line " + " and " + startStation +
-            " arrives at " + endLine + " line " + " and " + endStation + ".";
+        const print = "Rider boards the train a " + startLine + " Line " +
+              " and " + startStation +
+            " arrives at " + endLine + " line " + 
+              " and " + endStation + ".";
 
         let stops = subwayLines.lines[endLine].indexOf(endStation);
         let count = 0;
-            if (subwayLines.lines[startLine].indexOf(startStation) > stops) {
-            for (i = count; i < ssubwayLines.lines[startLine].indexOf(startStation); i++) {
+    if (subwayLines.lines[startLine].indexOf(startStation) > stops)
+        for (i = count; i < ssubwayLines.lines[startLine].indexOf(startStation); i++) {
                 
-                stops = count - subwayLines.lines[startLine].indexOf(startStation) * -1;
+             
+            stops = count - subwayLines.lines[startLine].indexOf(startStation) * -1;
             }
-
-        }
-
-        return print + " Stops " + stops;
+     } return print + " Stops " + stops;
 
     }
 }
