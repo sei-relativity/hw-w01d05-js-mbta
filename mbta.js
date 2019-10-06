@@ -41,6 +41,8 @@ const stopsBetweenStations = function(startLine, startStation, endLine, endStati
 				// Assign "Park Street" station to the following variables
 				const interStationOnStartLine = subwayLines[startLine].indexOf("Park Street");
 				const interStationOnEndLine = subwayLines[endLine].indexOf("Park Street");
+
+				// Initialise a total number of stops variables
 				let subtractInterStations = 0;
 
 				// Check if "Park Street" station index on starting line is less than the "Park Street" station on the ending line and vice versa
