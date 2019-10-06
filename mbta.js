@@ -1,16 +1,3 @@
-/*
-const verify = (a,b){
-const lines = ['red', 'green' ]
-    if (a == 'l'){
-        lines.indexOf(b)>=0
-    }
-
-}
-*/
-
-
-
-
 const stopsBetweenStations = function(StartLine, StartStation, EndLine, EndStation) {
     const Stations = {
         red: [
@@ -26,7 +13,6 @@ const stopsBetweenStations = function(StartLine, StartStation, EndLine, EndStati
             ]
     };
 
-//    verify(StartLine, StartStation, Stations)
 let totalStops = 0;
     if(StartLine == EndLine){
        totalStops = Math.abs(Stations[EndLine].indexOf(EndStation) - Stations[StartLine].indexOf(StartStation))
