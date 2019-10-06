@@ -35,6 +35,7 @@ const stopsBetweenStations = function(startLine, startStation, endLine, endStati
 				return printRoute(startLine, startStation, endLine, endStation, totalNumberOfStops);
 			}
 
+			// Check if the entered lines are equal
 			if (Object.keys(subwayLines).indexOf(startLine) !== Object.keys(subwayLines).indexOf(endLine)) {
 
 				// Assign "Park Street" station to the following variables
