@@ -1,34 +1,44 @@
-let start = 0;
-let end = 0;
-let theNumberOfStops = end - start;
-const Stations = {
-    Red: [
-            "South Station" , "Park Street", "Kendall", "Central", "Harvard", "Porter", "Davis", "Alewife"
-        ]
-        ,
-    Green: [
-            "Government Center" , "Park Street", "Boylston", "Arlington", "Copley", "Hynes", "Kenmore"
-        ]
-        ,
-    Orange: [
-            "North Station" , "Haymarket", "Park Street", "State", "Downtown Crossing", "Chinatown", "Back Bay", "Forest Hills"
-        ]
+/*
+const verify = (a,b){
+const lines = ['red', 'green' ]
+    if (a == 'l'){
+        lines.indexOf(b)>=0
+    }
+
+}
+*/
+
+
+
+
+const stopsBetweenStations = function(StartLine, StartStation, EndLine, EndStation) {
+    const Stations = {
+        red: [
+                "south station" , "Park Street", "Kendall", "Central", "Harvard", "Porter", "Davis", "Alewife"
+            ]
+            ,
+        green: [
+                "Government Center" , "Park Street", "Boylston", "Arlington", "Copley", "Hynes", "Kenmore"
+            ]
+            ,
+        orange: [
+                "North Station" , "Haymarket", "Park Street", "State", "Downtown Crossing", "Chinatown", "Back Bay", "Forest Hills"
+            ]
+    };
+
+//    verify(StartLine, StartStation, Stations)
+let totalStops = 0;
+    if(StartLine == EndLine){
+       totalStops = Math.abs(Stations[EndLine].indexOf(EndStation) - Stations[StartLine].indexOf(StartStation))
+    } else {
+        let firstTrip =  Math.abs(Stations[StartLine].indexOf(StartStation) - Stations[StartLine].indexOf("Park Street"));
+        let secondTrip = Math.abs(Stations[EndLine].indexOf(EndStation) - Stations[StartLine].indexOf("Park Street"));
+        totalStops = firstTrip + secondTrip;
+    }
+return totalStops;
 };
 
-const stopsBetweenStations = function(StartLine, StartStation, EndLine, EndStation) {
-    for(var i = 0; i < Stations.Red; i++) {
-        if(StartLine == Stations.Red[i]) {
-            Stations.Red.indexOf(Stations.Red[i]) += start;
-        }
-           else if(EndLine == Stations.Red[i]) {
-            Stations.Red.indexOf(Stations.Red[i]) += end
-           }
-        }
-        return theNumberOfStops + " Stops";
-};
 
-
-
-stopsBetweenStations('Red', 'Alewife', 'Red', 'Alewife') // 0 stops
-// stopsBetweenStations('Red', 'Alewife', 'Red', 'South Station') // 7 stops
-// stopsBetweenStations('Red', 'South Station', 'Green', 'Kenmore') // 6 stops
+stopsBetweenStations('red', 'Alewife', 'red', 'Alewife') // 0 stops
+stopsBetweenStations('red', 'Alewife', 'red', 'South Station') // 7 stops
+stopsBetweenStations('red', 'South Station', 'green', 'Kenmore') // 6 stops
