@@ -45,7 +45,7 @@ const stopsBetweenStations = (startLine, startStation, endLine, endStation) => {
       let locationStart = cityLines[startLine].indexOf(startStation);
       let locationEnd = cityLines[endLine].indexOf(endStation);
       let res = Math.abs(locationStart - locationEnd);
-      console.log(`${res} stops`);
+      console.log(`${res} stops. `);
     } else {
       let startLocation = cityLines[startLine].indexOf(startStation);
       let startChangeLocatoin = cityLines[startLine].indexOf("Park Street");
@@ -54,6 +54,17 @@ const stopsBetweenStations = (startLine, startStation, endLine, endStation) => {
       let endLocation = cityLines[endLine].indexOf(endStation);
       let endStops = Math.abs(endChangeLocatoin - endLocation);
       let allStops = startStops + endStops;
+      // console.log(`Rider boards the train a ${startLine} and ${startStation}.`);
+      let i = startLocation;
+      while (i !== startChangeLocatoin) {
+        if (startLocation > startChangeLocatoin) {
+          console.log(cityLines[startLine][i]);
+          i--;
+        } else if (startLocation < startChangeLocatoin) {
+          // console.log(cityLines[startLine][i]);
+          i++;
+        }
+      }
       console.log(`${allStops} stops`);
     }
   }
