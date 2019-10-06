@@ -19,7 +19,13 @@ const planTrip = (startLine, startStation, endLine, endStation) => {
       let locationStart = cityLines[startLine].indexOf(startStation);
       let locationEnd = cityLines[endLine].indexOf(endStation);
       let res = Math.abs(locationStart - locationEnd);
-      let route = cityLines[startLine].slice(locationStart + 1, locationEnd);
+      let route;
+      locationStart > locationEnd
+        ? (route = cityLines[startLine].slice(locationStart, locationEnd))
+        : (route = cityLines[startLine]
+            .slice(locationEnd, locationStart)
+            .reverse());
+
       console.log(`You board the train in ${startStation} at ${startLine}`);
       console.log(
         `You must travel through the following stops on the ${startLine} line: ${route.join(
@@ -38,7 +44,7 @@ const planTrip = (startLine, startStation, endLine, endStation) => {
             .reverse())
         : (startRoute = cityLines[startLine].slice(
             startLocation,
-            startChangeLocatoin
+            startChangeLocatoin + 1
           ));
       console.log(`You board the train in ${startStation} at ${startLine}`);
       console.log(
@@ -46,45 +52,37 @@ const planTrip = (startLine, startStation, endLine, endStation) => {
           ", "
         )}.`
       );
-      console.log(`Change at Union Square.`);
-      let endChangeLocatoin = cityLines[endLine].indexOf("Union Square");
+      console.log(`Change at Union Square to ${endLine} line.`);
+
+      // --------- end line ----------
+
+      let endChangeLocation = cityLines[endLine].indexOf("Union Square");
       let endLocation = cityLines[endLine].indexOf(endStation);
-      let endStops = Math.abs(endChangeLocatoin - endLocation);
+      let endStops = Math.abs(endChangeLocation - endLocation);
       let allStops = startStops + endStops;
       let endRoute;
-      console.log(endLocation);
-      endLocation > endChangeLocatoin
-        ? (endRoute = cityLines[endLine]).slice(endChangeLocatoin, endLocation)
-        : (endRoute = cityLines[endLine].slice(
-            endChangeLocatoin,
-            endLocation
-          )).reverse();
-      // console.log(
-      //   ` endLocation ${endLocation} and endChangeLocation ${endChangeLocatoin}`,
-      //   endRoute
-      // );
-
-      console.log("this is end route", endRoute);
+      endChangeLocation > endLocation
+        ? (endRoute = cityLines[endLine]
+            .slice(endLocation, endChangeLocation)
+            .reverse())
+        : (endRoute = cityLines[endLine].slice(endChangeLocation, endLocation));
       console.log(
         `Your journey continues on ${endLine} through the following stops: ${endRoute.join(
           ", "
         )}`
       );
-      // console.log(`Rider boards the train a ${startLine} and ${startStation}.`);
-      // let i = startLocation;
-      // while (i !== startChangeLocatoin) {
-      //   if (startLocation > startChangeLocatoin) {
-      //     console.log(cityLines[startLine][i]);
-      //     i--;
-      //   } else if (startLocation < startChangeLocatoin) {
-      //     // console.log(cityLines[startLine][i]);
-      //     i++;
-      //   }
-      // }
+
       console.log(`${allStops} stops in total`);
     }
   }
 };
-// planTrip("N", "34th", "N", "8th");
 
-planTrip("N", "Times Square", "6", "Astor Place");
+// planTrip("N", "8th", "L", "1st"); // This is only a suggested function name and signature.
+
+// console.log() shows output similar to this:
+// "You must travel through the following stops on the N line: 34th, 28th, 23rd, Union Square."
+// "Change at Union Square."
+// "Your journey continues through the following stops: 23rd, 28th, 33rd."
+// "7 stops in total."
+
+planTrip("N", "Times Square", "6", "33rd");
