@@ -14,7 +14,7 @@ const check = function(line, station){
     return false
 }
 
-const stopsBetweenStations = function (startLine, startStaion, endLin, endStaion){
+const stopsBetweenStations = function (startLine, startStaion, endLine, endStaion){
     let count = 0;
     let toInter1 = 0;
     let toInter2 = 0;
